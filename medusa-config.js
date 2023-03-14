@@ -1,27 +1,3 @@
-const dotenv = require('dotenv')
-
-let ENV_FILE_NAME = '';
-switch (process.env.NODE_ENV) {
-	case 'production':
-		ENV_FILE_NAME = '.env.production';
-		break;
-	case 'staging':
-		ENV_FILE_NAME = '.env.staging';
-		break;
-	case 'test':
-		ENV_FILE_NAME = '.env.test';
-		break;
-	case 'development':
-	default:
-		ENV_FILE_NAME = '.env';
-		break;
-}
-
-try {
-	dotenv.config({ path: process.cwd() + '/' + ENV_FILE_NAME });
-} catch (e) {
-}
-
 // CORS when consuming Medusa from admin
 const ADMIN_CORS = process.env.ADMIN_CORS || "http://localhost:7000,http://localhost:7001";
 
@@ -53,7 +29,7 @@ const plugins = [
   //   },
   // },
 ];
-/** @type {import('@medusajs/medusa').ConfigModule} */
+
 module.exports = {
   projectConfig: {
     redis_url: REDIS_URL,

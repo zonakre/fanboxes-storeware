@@ -13,7 +13,7 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
     workerMode: process.env.MEDUSA_WORKER_MODE,
-    redistUrl: process.env.REDIS_URL
+    redisUrl: process.env.REDIS_URL
  },
  admin: {
   path: process.env.ADMIN_PATH || '/app',

@@ -20,34 +20,34 @@ module.exports = defineConfig({
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
     backendUrl: process.env.MEDUSA_BACKEND_URL || "http://localhost:9000"
   },
-  modules: {
-    [Modules.FILE]: {
-     resolve: '@medusajs/file',
-     options: {
-       providers: [
-         {
-           resolve: '@medusajs/file-local-next',
-           id: 'local',
-           options: {
-             backend_url: `${process.env.MEDUSA_BACKEND_URL}/static`
-           }
-         }
-       ]
-     }
-   },
-   [Modules.CACHE]: {
+  modules: [
+    {
+      resolve: '@medusajs/file',
+      options: {
+        providers: [
+          {
+            resolve: '@medusajs/file-local-next',
+            id: 'local',
+            options: {
+              backend_url: `${process.env.MEDUSA_BACKEND_URL}/static`
+            }
+          }
+        ]
+      }
+    },
+    {
       resolve: "@medusajs/cache-redis",
       options: {
         redisUrl: process.env.REDIS_URL
       }
     },
-    [Modules.EVENT_BUS]: {
+    {
       resolve: "@medusajs/event-bus-redis",
       options: {
         redisUrl: process.env.REDIS_URL
       }
     },
-    [Modules.WORKFLOW_ENGINE]: {
+    {
       resolve: "@medusajs/workflow-engine-redis",
       options: {
         redis: {
@@ -55,5 +55,5 @@ module.exports = defineConfig({
         }
       }
     }
-  }
+  ]
 })

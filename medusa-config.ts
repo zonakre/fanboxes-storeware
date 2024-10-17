@@ -26,7 +26,7 @@ module.exports = defineConfig({
      options: {
        providers: [
          {
-           resolve: '@medusajs/file-local-next',
+           resolve: '@medusajs/medusa/file-local-next',
            id: 'local',
            options: {
              backend_url: `${process.env.MEDUSA_BACKEND_URL}/static`
@@ -36,19 +36,19 @@ module.exports = defineConfig({
      }
    },
    [Modules.CACHE]: {
-      resolve: "@medusajs/cache-redis",
+      resolve: "@medusajs/medusa/cache-redis",
       options: {
         redisUrl: process.env.REDIS_URL
       }
     },
     [Modules.EVENT_BUS]: {
-      resolve: "@medusajs/event-bus-redis",
+      resolve: "@medusajs/medusa/event-bus-redis",
       options: {
         redisUrl: process.env.REDIS_URL
       }
     },
     [Modules.WORKFLOW_ENGINE]: {
-      resolve: "@medusajs/workflow-engine-redis",
+      resolve: "@medusajs/medusa/workflow-engine-redis",
       options: {
         redis: {
           url: process.env.REDIS_URL

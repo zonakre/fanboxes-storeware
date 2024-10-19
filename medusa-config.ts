@@ -1,4 +1,5 @@
 import { loadEnv, Modules, defineConfig, ModuleRegistrationName } from '@medusajs/framework/utils'
+import { resolve } from 'path'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
@@ -21,6 +22,22 @@ module.exports = defineConfig({
     backendUrl: process.env.MEDUSA_BACKEND_URL || "http://localhost:9000"
   },
   modules: [
+    {
+      resolve: "@medusajs/medusa/payment",
+      key: ModuleRegistrationName.PAYMENT,
+      options: {
+        providers: [
+          {
+            resolve: "@medusajs/medusa/payment-stripe",
+            id: "stripe",
+            options: {
+              apiKey: process.env.STRIPE_API_KEY,
+              webhookSecret: process.env.STRIPE_WEBHOOK_SECRET
+            }
+          }
+        ]
+      }
+    },
     {
       resolve: "@medusajs/medusa/cache-redis",
       key: ModuleRegistrationName.CACHE,

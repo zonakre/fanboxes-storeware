@@ -27,7 +27,6 @@
     "@medusajs/cli": "rc",
     "@medusajs/framework": "rc",
     "@medusajs/medusa": "rc",
-    "@medusajs/medusa-cli": "rc",
     "@medusajs/cache-redis": "rc",
     "@medusajs/event-bus-redis": "rc",
     "@medusajs/workflow-engine-redis": "rc",

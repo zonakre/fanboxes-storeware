@@ -22,21 +22,6 @@ module.exports = defineConfig({
   },
   modules: [
     {
-      resolve: '@medusajs/file',
-      key: ModuleRegistrationName.FILE,
-      options: {
-        providers: [
-          {
-            resolve: '@medusajs/file-local-next',
-            id: 'local',
-            options: {
-              backend_url: `${process.env.MEDUSA_BACKEND_URL}/static`
-            }
-          }
-        ]
-      }
-    },
-    {
       resolve: "@medusajs/medusa/cache-redis",
       key: ModuleRegistrationName.CACHE,
       options: {
